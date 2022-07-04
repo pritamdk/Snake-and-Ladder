@@ -4,32 +4,42 @@ import java.util.Random;
 
 public class SnakeAndLadder {
 
-	public static void main(String[] args) {
-		
-		int player1StartPosition=0;
-		System.out.println("Player 1's initial position is: " +player1StartPosition);
-		int player1Position=0;
-		Random random=new Random();
-		int Dice=1+random.nextInt(6);
-		System.out.println(Dice);
-		System.out.println("Dice value: "+Dice);
-		Random random1=new Random();
-		int playOption=random1.nextInt(3);
-		System.out.println("Play option: "+playOption);
-		switch (playOption) {
-		case 0:
-			System.out.println("NO PLAY "+" Player position is " +player1Position);
-			break;
-		case 1:
-			player1Position=player1Position+Dice;
-			System.out.println("Ladder!! \n Player position is " +player1Position);
-			break;
+	
+	    private static final int NO_PLAY = 0;
+	    private static final int LADDER = 1;
+	    private static final int SNAKE = 2;
 
-		default:
-			player1Position=player1Position-Dice;
-			System.out.println("Snake "+"Player position is " +player1Position);
-			break;
-		}
+	    public static int getRandomInteger1(int maximum, int minimum)
+	    {
+	        return ((int) (Math.random()*(maximum - minimum))) + minimum;
+	    }
+
+	    
+	    public static void main(String[] args)
+	    {
+
+	        System.out.println(" Welcome to the Game of Snakes and Ladder");
+
+	        int startPositionA = 0;
+	        int dice = getRandomInteger1(7,1);
+	        System.out.println(dice);
+	        int checkPlay = (int) Math.floor(Math.random()*10)%3;
+	        System.out.println(checkPlay);
+
+	        switch(checkPlay)
+	        {
+	            case NO_PLAY:
+	                break;
+
+	            case LADDER:
+	                startPositionA += dice;
+	                break;
+
+	            case SNAKE:
+	                startPositionA -= dice;
+	                break;
+	        }
+
+	    }
+			
 	}
-
-} 
